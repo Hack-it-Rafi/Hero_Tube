@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <style>
+        h1{
+            color: #1309cf;
+        }
+        h3{
+            color: crimson;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <h1>
+            Discuss the scope of var, let, and const
+        </h1>
+        <p>
+            <h3>var:</h3>
+            1. Function scope: Variables declared with var are function-scoped, meaning they are accessible within the
+            function in which they are declared, regardless of block scope. <br>
+            2. Hoisting: Variables declared with var are hoisted to the top of their containing function or global
+            scope.This means that you can access a var variable before it's declared, but it will have an initial value
+            of undefined. <br>
+            3. Re-declaration: Variables declared with var can be re-declared within the same scope without error.
+        </p>
+        <p>
+            <h3>let:</h3>
+            1. Block scope: Variables declared with let are block-scoped, meaning they are only accessible within the
+            nearest enclosing block (e.g., a function, loop, or conditional statement). <br>
+            2. Hoisting: Like var, let variables are hoisted to the top of their block but are not initialized, so you
+            can't access them before their declaration. <br>
+            3. No re-declaration: You cannot re-declare a variable with let within the same block scope.
+        </p>
+        <p>
+            <h3>const:</h3>
+            1. Block scope: Variables declared with const are also block-scoped, just like let. <br>
+            2. Hoisting: const variables are hoisted but not initialized, similar to let. <br>
+            3. Constants: Unlike let, variables declared with const cannot be reassigned after their initial value is
+            set. However, for objects and arrays declared with const, their properties or elements can still be
+            modified.
+        </p>
+        <br> <br>
+    </section>
+    <hr>
+    <section>
+        <h1>Tell us the use cases of null and undefined.</h1>
+        <p>
+            <h3>null:</h3>
+            1. Explicit absence of value: null is often used to indicate the explicit absence of any object value or
+            value assignment. It represents a deliberate, empty, or non-existent value. <br>
+            2. Assignment: Developers can assign null to a variable or property to indicate that it has no meaningful
+            value or hasn't been initialized yet. <br>
+            3. Comparison: You can compare a variable or property against null to check if it lacks a value or if you
+            want to clear a reference to an object. <br>
+        </p>
+        <p>
+            <h3>undefined:</h3>
+            1. Default value: In JavaScript, when a variable is declared but not initialized, or when a function is called without passing a parameter, the variable or parameter is automatically assigned the value undefined. <br>
+            2. Indicates missing properties: When you access an object property that doesn't exist, JavaScript returns undefined. This can be used to check if a property is present or not. <br>
+            3. Return value: Functions that do not explicitly return a value return undefined by default.
+        </p>
+        <br> <br>
+    </section>
+    <hr>
+    <section>
+        <h1>What do you mean by REST API?</h1>
+        <p>REST API, which stands for Representational State Transfer Application Programming Interface, is a set of architectural principles and constraints for designing and interacting with web services. It is an architectural style for designing networked applications, particularly web services, that use HTTP (Hypertext Transfer Protocol) as their communication protocol. REST is not a technology or a specific protocol but rather a set of constraints and guidelines for creating scalable and stateless web services. It follows principles like statelessness, a uniform interface, and resource-based URLs for efficient and scalable data exchange between clients and servers.</p>
+    </section>
+</body>
+
+</html>
