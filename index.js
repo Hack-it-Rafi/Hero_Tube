@@ -42,7 +42,7 @@ function sortHTMLArray(array, childSelector) {
     const numericB = parseFloat(textB.match(/\d+/));
 
     // Compare the numeric values for sorting
-    return numericA - numericB;
+    return numericB - numericA;
     });
   }
 
@@ -103,27 +103,17 @@ const handleList = async (id = 1000) => {
 
     sortHTMLArray(htmlArray, '.viewGula');
     console.log(htmlArray);
+    const cardContainer2 = document.getElementById("cardContainer");
     document.getElementById("sortButton").addEventListener("click", function(){
-        cardContainer.innerHTML = '';
-        const card2 = document.createElement('div');
-        // htmlArray.forEach((element)=>{
-        //     let c = 0
-        //     // console.log(element);
-        //     card2.innerHTML=element;
-        //     console.log(card2, c++);
-        //     // cardContainer.appendChild(card2);
-        //     // console.log();
-        //     // console.log(cardContainer);
-        // })
-        let c=0;
+        cardContainer2.innerHTML = '';
+        // const card2 = document.createElement('div');
+        
         for(let i=0; i<htmlArray.length; i++){
-            card2.innerHTML ='';
-            let text = htmlArray[i];
-            card2.innerHTML = text;
-            const crd = card2.innerHTML;
-            console.log(crd);
-            cardContainer.appendChild(crd);
+            const card2 = document.createElement('div');
+            card2.innerHTML = htmlArray[i];
+            cardContainer2.appendChild(card2);
         }
+        
         
     })
 
