@@ -21,11 +21,30 @@ const cateClicked = async (click, id) => {
     click.classList.add("tab-active")
     console.log(click.classList);
 }
-function compareNumericParts(a, b) {
-    const numericPartA = parseFloat(a.match(/[\d.]+/)[0]);
-    const numericPartB = parseFloat(b.match(/[\d.]+/)[0]);
-    return numericPartA - numericPartB;
-}
+// function compareNumericParts(a, b) {
+//     const numericPartA = parseFloat(a.match(/[\d.]+/)[0]);
+//     const numericPartB = parseFloat(b.match(/[\d.]+/)[0]);
+//     return numericPartA - numericPartB;
+// }
+
+function sortHTMLArray(array, childSelector) {
+    return array.sort(function (a, b) {
+      // Convert the HTML strings to DOM elements
+      const parser = new DOMParser();
+      const docA = parser.parseFromString(a, 'text/html');
+      const docB = parser.parseFromString(b, 'text/html');
+  
+      // Extract child elements with the given selector and their text content
+      const textA = docA.querySelector(childSelector).textContent.trim();
+      const textB = docB.querySelector(childSelector).textContent.trim();
+  
+      const numericA = parseFloat(textA.match(/\d+/));
+    const numericB = parseFloat(textB.match(/\d+/));
+
+    // Compare the numeric values for sorting
+    return numericA - numericB;
+    });
+  }
 
 const handleList = async (id = 1000) => {
     let htmlArray = [];
@@ -33,7 +52,7 @@ const handleList = async (id = 1000) => {
     const data = await response.json();
     console.log(data.data);
     let arr = data.data.map((it) => it.others.views);
-    arr.sort(compareNumericParts);
+    // arr.sort(compareNumericParts);
     console.log(arr);
     const uniqueArr = arr.filter((value, index, self) => {
         // Keep the first occurrence of each element
@@ -77,10 +96,36 @@ const handleList = async (id = 1000) => {
         </div>
 
         `;
-        htmlArray.push(card);
+        htmlArray.push(`${card.innerHTML}`);
         cardContainer.appendChild(card);
     });
+    // console.log(htmlArray);
+
+    sortHTMLArray(htmlArray, '.viewGula');
     console.log(htmlArray);
+    document.getElementById("sortButton").addEventListener("click", function(){
+        cardContainer.innerHTML = '';
+        const card2 = document.createElement('div');
+        // htmlArray.forEach((element)=>{
+        //     let c = 0
+        //     // console.log(element);
+        //     card2.innerHTML=element;
+        //     console.log(card2, c++);
+        //     // cardContainer.appendChild(card2);
+        //     // console.log();
+        //     // console.log(cardContainer);
+        // })
+        let c=0;
+        for(let i=0; i<htmlArray.length; i++){
+            card2.innerHTML ='';
+            let text = htmlArray[i];
+            card2.innerHTML = text;
+            const crd = card2.innerHTML;
+            console.log(crd);
+            cardContainer.appendChild(crd);
+        }
+        
+    })
 
     // document.getElementById("sortButton").addEventListener("click", function async() {
     //     cardContainer.innerHTML = '';
