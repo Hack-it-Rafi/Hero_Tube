@@ -60,11 +60,11 @@ const handleList = async (id = 1000) => {
         let hour = intMin / 60;
         let intHour = parseInt(hour);
         intMin = parseInt((hour - intHour) * 60);
-        const time = intHour + "hr " + intMin + "min";
+        const time = intHour + "hr " + intMin + "min ago";
         card.innerHTML = `
         <div class="card bg-base-100 rounded-md">
         <figure class="h-[200px]"><img class="contain rounded-md h-[200px] w-full" src="${content.thumbnail}" alt="Shoes" class="rounded-md relative" />
-        <div class="absolute top-44 right-[10px] bg-slate-500 rounded-lg px-2 ">
+        <div class="absolute top-44 right-[10px] bg-slate-600 rounded-lg px-2 ">
             <p class="text-[12px] text-white">${content.others.posted_date ? time : ""}</p>
         </div>
         </figure>
