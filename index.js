@@ -21,14 +21,14 @@ const cateClicked = async (click, id) => {
     click.classList.add("tab-active")
     console.log(click.classList);
 }
-function sortHTMLArray(array, childSelector) {
+function sortHTMLArray(array, className) {
     return array.sort(function (a, b) {
         const parser = new DOMParser();
         const docA = parser.parseFromString(a, 'text/html');
         const docB = parser.parseFromString(b, 'text/html');
 
-        const textA = docA.querySelector(childSelector).textContent.trim();
-        const textB = docB.querySelector(childSelector).textContent.trim();
+        const textA = docA.querySelector(className).textContent.trim();
+        const textB = docB.querySelector(className).textContent.trim();
 
         const numericA = parseFloat(textA.match(/\d+/));
         const numericB = parseFloat(textB.match(/\d+/));
@@ -60,7 +60,7 @@ const handleList = async (id = 1000) => {
         let hour = intMin / 60;
         let intHour = parseInt(hour);
         intMin = parseInt((hour - intHour) * 60);
-        const time = intHour + "hr " + intMin + "min ";
+        const time = intHour + "hr " + intMin + "min";
         card.innerHTML = `
         <div class="card bg-base-100 rounded-md">
         <figure class="h-[200px]"><img class="contain rounded-md h-[200px] w-full" src="${content.thumbnail}" alt="Shoes" class="rounded-md relative" />
